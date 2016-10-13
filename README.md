@@ -22,8 +22,8 @@ gcr.io/google_containers/pause-amd64                     3.0
 ```
 images=(kube-proxy-amd64:v1.4.0 kube-discovery-amd64:1.0 kubedns-amd64:1.7 kube-scheduler-amd64:v1.4.0 kube-controller-manager-amd64:v1.4.0 kube-apiserver-amd64:v1.4.0 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0)
 for imageName in ${images[@]} ; do
-  docker pull  sails/$imageName
-  docker tag  sails/$imageName gcr.io/google_containers/$imageName
+  docker pull  sailsxu/$imageName
+  docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
 done
 ```
 
