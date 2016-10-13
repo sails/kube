@@ -1,5 +1,5 @@
 # kube
-由于不能从google container上直接pull镜像，所以这里通过dockerfile直接获取到docker hub的服务器上，然后再从它们上面拉取.
+由于不能从google container上直接pull镜像，所以这里通过docker hub的Automated Builds功能从项目的dockerfile中Build到docker的官方服务器上，然后再从它们上面拉取.
 
 ##	kube 1.4需要的镜像:
 ```
