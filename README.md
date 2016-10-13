@@ -16,7 +16,7 @@ gcr.io/google_containers/pause-amd64                     3.0
 ```
 
 ## docker hub上设置
-由于docker hub不能后期更改一个image的tag，所以每次更新kubernetes时，都在build settings中，手动修改要编译到的版本，要先把它的自动编译去掉，因为这里都是在一个文件中修改，以防止自动编译时用新的版本镜像代替老的.
+由于docker hub不能后期更改一个image的tag，所以每次更新kubernetes时，都在build settings中，手动增加一个版本对应文件
 
 ## 更改tag
 ```
