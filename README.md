@@ -32,3 +32,6 @@ done
 ```
 kubeadm init --use-kubernetes-version v1.4.0
 ```
+
+## 如果docker hub也不能访问
+如果docker hub也不能访问，那么可以通过daocloud的加速，它会在docker的配置--registry-mirro中加一个镜像服务器，但是通过它还是不能访问google container的镜像，所以还是需要上面在docker hub中配置
