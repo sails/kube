@@ -27,7 +27,7 @@ for imageName in ${images[@]} ; do
   docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
 done
 
-image=(heapster:canary heapster_grafana:v2.6.0 heapster_influxdb:v0.6)
+images=(heapster:canary heapster_grafana:v2.6.0 heapster_influxdb:v0.6)
 for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
   docker tag  sailsxu/$imageName kubernetes/$imageName
