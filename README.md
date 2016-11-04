@@ -13,6 +13,7 @@ gcr.io/google_containers/etcd-amd64                      2.2.5
 gcr.io/google_containers/kube-dnsmasq-amd64              1.3
 gcr.io/google_containers/exechealthz-amd64               1.1
 gcr.io/google_containers/pause-amd64                     3.0
+kubernetes/heapster                                      canary
 ```
 
 ## docker hub上设置
@@ -24,6 +25,12 @@ images=(kube-proxy-amd64:v1.4.0 kube-discovery-amd64:1.0 kubedns-amd64:1.7 kube-
 for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
   docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
+done
+
+image=(heapster:canary heapster_grafana:v2.6.0 heapster_influxdb:v0.6)
+for imageName in ${images[@]} ; do
+  docker pull  sailsxu/$imageName
+  docker tag  sailsxu/$imageName kubernetes/$imageName
 done
 ```
 
