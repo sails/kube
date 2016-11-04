@@ -1,0 +1,1 @@
+FROM kubernetes/heapster:canary
