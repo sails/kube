@@ -14,6 +14,7 @@ gcr.io/google_containers/kube-dnsmasq-amd64              1.3
 gcr.io/google_containers/exechealthz-amd64               1.1
 gcr.io/google_containers/pause-amd64                     3.0
 kubernetes/heapster                                      canary
+gcr.io/google_containers/kubernetes-dashboard-amd64      v1.4.0
 ```
 
 ## docker hub上设置
