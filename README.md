@@ -39,6 +39,15 @@ done
 ```
 kubeadm init --use-kubernetes-version v1.4.0
 ```
+### 当通过kubeadm安装后，还需要安装网络
+由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络。这里使用的方案就是 weave net:
+```
+kubectl apply -f https://git.io/weave-kube
+```
+因为之前的 kube-dns addon 是依赖 pod 网络的，所以在没有部署 pod 网络之前，kube-dns 都会报错，因此只需要检查 kube-dns 是否成功就知道 pod 网络有没有成功了。
+```
+kubectl get pods --all-namespaces
+```
 
 ## 如果docker hub也不能访问
 如果docker hub也不能访问，那么可以通过daocloud的加速，它会在docker的配置--registry-mirro中加一个镜像服务器，但是通过它还是不能访问google container的镜像，所以还是需要上面在docker hub中配置
