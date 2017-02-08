@@ -40,6 +40,11 @@ done
 ```
 kubeadm init --use-kubernetes-version v1.4.0
 ```
+
+### 让kubernetes可以在master上启动业务pods
+```
+kubectl taint nodes --all dedicated-
+```
 ### 当通过kubeadm安装后，还需要安装网络
 由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络。这里使用的方案就是 weave net:
 ```
