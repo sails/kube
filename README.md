@@ -11,6 +11,7 @@ gcr.io/google_containers/kube-controller-manager-amd64   v1.5.2
 gcr.io/google_containers/kube-apiserver-amd64            v1.5.2
 gcr.io/google_containers/etcd-amd64                      3.0.14-kubeadm
 gcr.io/google_containers/kube-dnsmasq-amd64              1.4
+gcr.io/google_containers/dnsmasq-metrics-amd64           1.0
 gcr.io/google_containers/exechealthz-amd64               1.2
 gcr.io/google_containers/pause-amd64                     3.0
 kubernetes/heapster                                      canary
@@ -22,7 +23,7 @@ gcr.io/google_containers/kubernetes-dashboard-amd64      v1.5.1
 
 ## 更改tag
 ```
-images=(kube-proxy-amd64:v1.5.2 kube-discovery-amd64:1.0 kubedns-amd64:1.9 kube-scheduler-amd64:v1.5.2 kube-controller-manager-amd64:v1.5.2 kube-apiserver-amd64:v1.5.2 etcd-amd64:3.0.14-kubeadm kube-dnsmasq-amd64:1.4 exechealthz-amd64:1.2 pause-amd64:3.0)
+images=(kube-proxy-amd64:v1.5.2 kube-discovery-amd64:1.0 kubedns-amd64:1.9 kube-scheduler-amd64:v1.5.2 kube-controller-manager-amd64:v1.5.2 kube-apiserver-amd64:v1.5.2 etcd-amd64:3.0.14-kubeadm kube-dnsmasq-amd64:1.4 exechealthz-amd64:1.2 pause-amd64:3.0 dnsmasq-metrics-amd64:1.0)
 for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
   docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
