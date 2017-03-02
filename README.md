@@ -1,20 +1,20 @@
 # kube
 由于不能从google container上直接pull镜像，所以这里通过docker hub的Automated Builds功能从项目的dockerfile中Build到docker的官方服务器上，然后再从它们上面拉取.
 
-##	kube 1.4需要的镜像:
+##	kube 1.5.2需要的镜像:
 ```
-gcr.io/google_containers/kube-proxy-amd64                v1.4.0
+gcr.io/google_containers/kube-proxy-amd64                v1.5.2
 gcr.io/google_containers/kube-discovery-amd64            1.0
-gcr.io/google_containers/kubedns-amd64                   1.7
-gcr.io/google_containers/kube-scheduler-amd64            v1.4.0
-gcr.io/google_containers/kube-controller-manager-amd64   v1.4.0
-gcr.io/google_containers/kube-apiserver-amd64            v1.4.0
-gcr.io/google_containers/etcd-amd64                      2.2.5
-gcr.io/google_containers/kube-dnsmasq-amd64              1.3
-gcr.io/google_containers/exechealthz-amd64               1.1
+gcr.io/google_containers/kubedns-amd64                   1.9
+gcr.io/google_containers/kube-scheduler-amd64            v1.5.2
+gcr.io/google_containers/kube-controller-manager-amd64   v1.5.2
+gcr.io/google_containers/kube-apiserver-amd64            v1.5.2
+gcr.io/google_containers/etcd-amd64                      3.0.14-kubeadm
+gcr.io/google_containers/kube-dnsmasq-amd64              1.4
+gcr.io/google_containers/exechealthz-amd64               1.2
 gcr.io/google_containers/pause-amd64                     3.0
 kubernetes/heapster                                      canary
-gcr.io/google_containers/kubernetes-dashboard-amd64      v1.4.0
+gcr.io/google_containers/kubernetes-dashboard-amd64      v1.5.1
 ```
 
 ## docker hub上设置
@@ -22,7 +22,7 @@ gcr.io/google_containers/kubernetes-dashboard-amd64      v1.4.0
 
 ## 更改tag
 ```
-images=(kube-proxy-amd64:v1.4.0 kube-discovery-amd64:1.0 kubedns-amd64:1.7 kube-scheduler-amd64:v1.4.0 kube-controller-manager-amd64:v1.4.0 kube-apiserver-amd64:v1.4.0 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0)
+images=(kube-proxy-amd64:v1.5.2 kube-discovery-amd64:1.0 kubedns-amd64:1.7 kube-scheduler-amd64:v1.5.2 kube-controller-manager-amd64:v1.5.2 kube-apiserver-amd64:v1.5.2 etcd-amd64:3.0.14-kubeadm kube-dnsmasq-amd64:1.4 exechealthz-amd64:1.2 pause-amd64:3.0)
 for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
   docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
@@ -33,12 +33,18 @@ for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
   docker tag  sailsxu/$imageName kubernetes/$imageName
 done
+
+images=(elasticsearch:v2.4.1-1 fluentd-elasticsearch:1.22 kibana: v4.6.1-1)
+for imageName in ${images[@]} ; do
+  docker pull  sailsxu/$imageName
+  docker tag  sailsxu/$imageName kubernetes/$imageName
+done
 ```
 
 
 ## 通过kubeadm安装
 ```
-kubeadm init --use-kubernetes-version v1.4.0
+kubeadm init --use-kubernetes-version v1.5.2
 ```
 
 ### 让kubernetes可以在master上启动业务pods
