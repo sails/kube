@@ -62,4 +62,4 @@ kubectl get pods --all-namespaces
 ```
 
 ## 如果docker hub也不能访问
-如果docker hub也不能访问，那么可以通过daocloud的加速，它会在docker的配置--registry-mirro中加一个镜像服务器，但是通过它还是不能访问google container的镜像，所以还是需要上面在docker hub中配置
+如果docker hub也不能访问，那么可以通过阿里云(https://cr.console.aliyun.com/#/accelerator)或者daocloud(https://www.daocloud.io/mirror#accelerator-doc)的加速，它会在docker的配置--registry-mirro中加一个镜像服务器，但是通过它还是不能访问google container的镜像，所以还是需要上面在docker hub中配置
