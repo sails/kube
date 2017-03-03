@@ -48,7 +48,7 @@ done
 kubeadm init --use-kubernetes-version v1.5.2
 
 #或者
-#kubeadm init --use-kubernetes-version v1.5.2 --discovery token://
+#kubeadm init --use-kubernetes-version v1.5.2 --pod-network-cidr=10.244.0.0/16 --discovery token://
 #当时加入某个结点时
 #kubeadm join --discovery token://xxxx@xx.xx.xx.xx:port
 ```
@@ -58,7 +58,7 @@ kubeadm init --use-kubernetes-version v1.5.2
 kubectl taint nodes --all dedicated-
 ```
 ### 当通过kubeadm安装后，还需要安装网络
-由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络。这里使用的方案就是 weave net:
+由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络插件。weave net或者flannel:
 ```
 kubectl apply -f https://git.io/weave-kube
 ```
