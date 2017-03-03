@@ -47,10 +47,10 @@ done
 ```
 kubeadm init --use-kubernetes-version v1.5.2
 
-#或者
-#kubeadm init --use-kubernetes-version v1.5.2 --pod-network-cidr=10.244.0.0/16 --discovery token://
+#或者(可以通过netstat -rn来看是否需要重新设置 --pod-network-cidr，默认的是10.244.0.0/16)
+#kubeadm init --use-kubernetes-version v1.5.2 --pod-network-cidr=172.16.0.0/16
 #当时加入某个结点时
-#kubeadm join --discovery token://xxxx@xx.xx.xx.xx:port
+#kubeadm join --token=xxx.xxx ip
 ```
 
 ### 让kubernetes可以在master上启动业务pods
@@ -58,9 +58,10 @@ kubeadm init --use-kubernetes-version v1.5.2
 kubectl taint nodes --all dedicated-
 ```
 ### 当通过kubeadm安装后，还需要安装网络
-由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络插件。weave net或者flannel:
+由于 pod 可能运行在不同的机器上，所以为了能让 pod 互相通信，就需要安装 pod 网络插件。weave net或者flannel，如果启动master时配置了pod-network-cidr，这里也要配置:
 ```
 kubectl apply -f https://git.io/weave-kube
+
 ```
 因为之前的 kube-dns addon 是依赖 pod 网络的，所以在没有部署 pod 网络之前，kube-dns 都会报错，因此只需要检查 kube-dns 是否成功就知道 pod 网络有没有成功了。
 ```
@@ -78,8 +79,4 @@ kubectl get pods --all-namespaces
 apt install -y -f gdebi
 apt install -y -f socat
 dpkg -i kubeadm.deb kubectl.deb kubelet.deb kube-cni.deb
-
-#centos
-yum install -y socat
-rpm -ivh kubectl.rpm kubelet.rpm kube-cni.rpm kubeadm.rpm
 ```
