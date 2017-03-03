@@ -38,7 +38,7 @@ done
 images=(elasticsearch:v2.4.1-1 fluentd-elasticsearch:1.22 kibana: v4.6.1-1)
 for imageName in ${images[@]} ; do
   docker pull  sailsxu/$imageName
-  docker tag  sailsxu/$imageName kubernetes/$imageName
+  docker tag  sailsxu/$imageName gcr.io/google_containers/$imageName
 done
 ```
 
