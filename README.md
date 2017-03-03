@@ -46,6 +46,11 @@ done
 ## 通过kubeadm安装
 ```
 kubeadm init --use-kubernetes-version v1.5.2
+
+#或者
+#kubeadm init --use-kubernetes-version v1.5.2 --discovery token://
+#当时加入某个结点时
+#kubeadm join --discovery token://xxxx@xx.xx.xx.xx:port
 ```
 
 ### 让kubernetes可以在master上启动业务pods
@@ -67,7 +72,7 @@ kubectl get pods --all-namespaces
 
 
 ## 安装kubeadm
-由于kubeadm安装时也要从google的源上下载，这里配置一个离线的包[kubeadm](https://github.com/sails/kube/other/)：
+由于kubeadm安装时也要从google的源上下载，这里配置一个离线的包[kubeadm](https://github.com/sails/kube/tree/master/other/)：
 ```
 # ubuntu
 apt install -y -f gdebi
